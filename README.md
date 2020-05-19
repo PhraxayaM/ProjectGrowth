@@ -4,6 +4,7 @@
 Project Growth is designed for people who want to keep a progress track of something new they started, such as growing a new plant.
 
 ## Wireframe
+![Imgur Image](https://imgur.com/jvcymqj.jpg)
 
 ## Planned Features
 
