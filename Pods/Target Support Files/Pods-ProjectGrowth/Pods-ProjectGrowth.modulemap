@@ -1,0 +1,6 @@
+framework module Pods_ProjectGrowth {
+  umbrella header "Pods-ProjectGrowth-umbrella.h"
+
+  export *
+  module * { export * }
+}

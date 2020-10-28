@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var toggled = true
+    var buttonDimensions:CGFloat = 50
     var body: some View {
         VStack
             {
@@ -16,9 +18,16 @@ struct ContentView: View {
                 {
             HStack
                 {
-                    Text("Hello, World!")
-
-                
+                    Spacer()
+                    Spacer()
+                    Button(action: {
+                        self.toggled = true
+                    }) {
+                        Image(systemName: "text.bubble")
+                            .font(.system(size: 25))
+                            .foregroundColor(!toggled ? Color.white : Color.init(white: 0.8))
+                    }
+                    Spacer()
             }
             }
 
