@@ -7,28 +7,66 @@
 //
 
 import UIKit
+import Firebase
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let photoButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "Logo").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "plus_photo").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handlePlusPhoto), for: .touchUpInside)
         return button
     }()
+    
+    @objc func handlePlusPhoto() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let editedImage = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
+            photoButton.setImage(editedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        } else {
+            let originalImage = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage")] as? UIImage
+            photoButton.setImage(originalImage?.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        photoButton.layer.cornerRadius = photoButton.frame.width/2
+        photoButton.layer.masksToBounds = true
+        photoButton.layer.borderWidth = 3
+        photoButton.layer.borderColor = UIColor.black.cgColor
+        
+        dismiss(animated: true, completion: nil)
+    }
     
     let emailTF: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Email"
         tf.backgroundColor  = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
+        tf.addTarget(self, action: #selector(handeTextInputChange), for: .editingChanged)
         return tf
     }()
+    
+    @objc func handeTextInputChange() {
+        let isEmailValid = emailTF.text?.count ?? 0 > 0 && usernameTF.text?.count ?? 0 > 0 && passwordTF.text?.count ?? 0 > 0
+        
+        if isEmailValid {
+            signUpButton.isEnabled  = true
+            signUpButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237)
+        } else {
+            signUpButton.isEnabled = false
+            signUpButton.backgroundColor = UIColor.rgb(red: 149, green: 149, blue: 149)
+        }
+        
+    }
     
     let usernameTF: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Username"
         tf.backgroundColor  = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
+        tf.addTarget(self, action: #selector(handeTextInputChange), for: .editingChanged)
         return tf
     }()
     
@@ -37,6 +75,7 @@ class LoginVC: UIViewController {
         tf.placeholder = "Password"
         tf.backgroundColor  = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
+        tf.addTarget(self, action: #selector(handeTextInputChange), for: .editingChanged)
         return tf
     }()
     
@@ -47,13 +86,71 @@ class LoginVC: UIViewController {
         button.layer.cornerRadius =  5
         button.titleLabel?.font  = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(.white, for: .normal)
+        
+        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         return button
     }()
+    
+    @objc func handleSignUp()  {
+        guard let email = emailTF.text, email.count > 0 else { return }
+        guard let username = usernameTF.text, username.count > 0 else { return }
+        guard let password = passwordTF.text, password.count > 0 else { return }
+        Firebase.Auth.auth().createUser(withEmail: email, password: password) { (user: AuthDataResult?, err: Error?) in
+            if let err = err {
+                print("Failed to create user:", err)
+                return
+            }
+            
+            print("User created:", user?.user.uid ?? "")
+            
+            guard let image = self.photoButton.imageView?.image else { return }
+            
+            guard let uploadData = image.jpegData(compressionQuality: 0.3) else { return }
+            let filename = NSUUID().uuidString
+            
+            let storageRef = Storage.storage().reference().child("profile_images").child(filename)
+            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, err) in
+                
+                if let err = err {
+                    print("Failed to upload profile image:", err)
+                    return
+                }
+            
+            // Firebase 5 Update: Must now retrieve downloadURL
+            storageRef.downloadURL(completion: { (downloadURL, err) in
+                guard let profileImageUrl = downloadURL?.absoluteString else { return }
+                
+                print("Successfully uploaded profile image:", profileImageUrl)
+                
+                guard let uid = user?.user.uid else { return }
+                
+                let dictionaryValues = ["username": username, "profileImageUrl": profileImageUrl]
+                let values = [uid: dictionaryValues]
+                
+                Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
+                    
+                    if let err = err {
+                        print("Failed to save user info into db:", err)
+                        return
+                    }
+                    
+                    print("Successfully saved user info to db")
+                    
+                    
+                    self.dismiss(animated: true, completion: nil)
+                    
+                })
+            })
+            })
+            }
+    }
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(photoButton)
         view.backgroundColor =  .white
-        photoButton.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 100, paddingLeft: 70, paddingBottom: 0, paddingRight: 0, width: 140, height: 140)
+        photoButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 100, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 140, height: 140)
+        photoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         setupInputFields()
         
