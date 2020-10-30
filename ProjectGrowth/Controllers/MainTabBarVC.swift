@@ -7,11 +7,27 @@
 //
 
 import UIKit
+import Firebase
 
 class MainTabBarVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let layout = UICollectionViewFlowLayout()
+        let userprofileVC = UserProfileVC(collectionViewLayout: layout)
         
+        let navController = UINavigationController(rootViewController: userprofileVC)
+        
+        navController.tabBarItem.image = #imageLiteral(resourceName: "home_selected")
+        navController.tabBarItem.selectedImage = #imageLiteral(resourceName: "home_selected")
+        
+        tabBar.tintColor = .black
+        
+        
+        viewControllers = [navController, UIViewController()]
+            
     }
+    
+    
+    
 }

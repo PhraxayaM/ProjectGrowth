@@ -20,9 +20,11 @@
 		CD82EE33248D21C700CA8BEF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD82EE32248D21C700CA8BEF /* HomeViewController.swift */; };
 		CD82EE36248D525B00CA8BEF /* HomeVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD82EE35248D525B00CA8BEF /* HomeVCExtension.swift */; };
 		CD82EE39248DC71400CA8BEF /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD82EE38248DC71400CA8BEF /* CustomCell.swift */; };
-		CD82EE3D248DC78000CA8BEF /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD82EE3C248DC78000CA8BEF /* DataModel.swift */; };
+		CD82EE3D248DC78000CA8BEF /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD82EE3C248DC78000CA8BEF /* UserModel.swift */; };
 		CD9471D4254906C700D7D791 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD9471D3254906C700D7D791 /* GoogleService-Info.plist */; };
 		CD94720B254B4C8E00D7D791 /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD94720A254B4C8E00D7D791 /* MainTabBarVC.swift */; };
+		CD947226254B553000D7D791 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD947225254B553000D7D791 /* UserProfileVC.swift */; };
+		CD94722E254B983F00D7D791 /* UserProfileHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD94722D254B983F00D7D791 /* UserProfileHeaderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,9 +42,11 @@
 		CD82EE32248D21C700CA8BEF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CD82EE35248D525B00CA8BEF /* HomeVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCExtension.swift; sourceTree = "<group>"; };
 		CD82EE38248DC71400CA8BEF /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
-		CD82EE3C248DC78000CA8BEF /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		CD82EE3C248DC78000CA8BEF /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		CD9471D3254906C700D7D791 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CD94720A254B4C8E00D7D791 /* MainTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
+		CD947225254B553000D7D791 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
+		CD94722D254B983F00D7D791 /* UserProfileHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderCell.swift; sourceTree = "<group>"; };
 		D2EA1CB2E62182C9D539A07B /* Pods_ProjectGrowth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectGrowth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F68F80EECE6A0E5DCAF1A26A /* Pods-ProjectGrowth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectGrowth.release.xcconfig"; path = "Target Support Files/Pods-ProjectGrowth/Pods-ProjectGrowth.release.xcconfig"; sourceTree = "<group>"; };
 		F9452EB9337A27EB66350261 /* Pods-ProjectGrowth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectGrowth.debug.xcconfig"; path = "Target Support Files/Pods-ProjectGrowth/Pods-ProjectGrowth.debug.xcconfig"; sourceTree = "<group>"; };
@@ -98,7 +102,6 @@
 		CD6783122473A72E00043F51 /* ProjectGrowth */ = {
 			isa = PBXGroup;
 			children = (
-				CD82EE3B248DC76E00CA8BEF /* ViewModel */,
 				CD82EE3A248DC76700CA8BEF /* Model */,
 				CD82EE37248DC6F200CA8BEF /* Views */,
 				CD82EE34248D524200CA8BEF /* Extensions */,
@@ -129,6 +132,7 @@
 				CD82EE32248D21C700CA8BEF /* HomeViewController.swift */,
 				CD5962862547846400DE6B17 /* LoginVC.swift */,
 				CD94720A254B4C8E00D7D791 /* MainTabBarVC.swift */,
+				CD947225254B553000D7D791 /* UserProfileVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -147,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				CD82EE38248DC71400CA8BEF /* CustomCell.swift */,
+				CD94722D254B983F00D7D791 /* UserProfileHeaderCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -154,16 +159,9 @@
 		CD82EE3A248DC76700CA8BEF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CD82EE3C248DC78000CA8BEF /* DataModel.swift */,
+				CD82EE3C248DC78000CA8BEF /* UserModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		CD82EE3B248DC76E00CA8BEF /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,7 +193,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = "MattHew Phraxayavong";
 				TargetAttributes = {
 					CD67830F2473A72E00043F51 = {
@@ -282,7 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD82EE3D248DC78000CA8BEF /* DataModel.swift in Sources */,
+				CD82EE3D248DC78000CA8BEF /* UserModel.swift in Sources */,
 				CD6783142473A72E00043F51 /* AppDelegate.swift in Sources */,
 				CD5962872547846400DE6B17 /* LoginVC.swift in Sources */,
 				CD59628B2547E09500DE6B17 /* ColorExtension.swift in Sources */,
@@ -293,6 +291,8 @@
 				CD94720B254B4C8E00D7D791 /* MainTabBarVC.swift in Sources */,
 				CD59628E2547E27500DE6B17 /* AnchorExtension.swift in Sources */,
 				CD82EE33248D21C700CA8BEF /* HomeViewController.swift in Sources */,
+				CD94722E254B983F00D7D791 /* UserProfileHeaderCell.swift in Sources */,
+				CD947226254B553000D7D791 /* UserProfileVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +336,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -396,6 +397,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
