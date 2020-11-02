@@ -13,6 +13,17 @@ class MainTabBarVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if Firebase.Auth.auth().currentUser == nil {
+            DispatchQueue.main.async {
+                let loginController = LoginVC()
+                let navController = UINavigationController(rootViewController: loginController)
+                navController.modalPresentationStyle = .fullScreen
+                self.present(navController, animated: true, completion: nil)
+                
+            }
+            return
+        }
+        
         let layout = UICollectionViewFlowLayout()
         let userprofileVC = UserProfileVC(collectionViewLayout: layout)
         
