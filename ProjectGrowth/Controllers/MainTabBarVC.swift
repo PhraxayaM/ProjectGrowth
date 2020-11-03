@@ -19,11 +19,13 @@ class MainTabBarVC: UITabBarController {
                 let navController = UINavigationController(rootViewController: loginController)
                 navController.modalPresentationStyle = .fullScreen
                 self.present(navController, animated: true, completion: nil)
-                
             }
             return
         }
-        
+        setupViewControllers()
+    }
+    
+    func setupViewControllers() {
         let layout = UICollectionViewFlowLayout()
         let userprofileVC = UserProfileVC(collectionViewLayout: layout)
         
@@ -35,10 +37,8 @@ class MainTabBarVC: UITabBarController {
         tabBar.tintColor = .black
         
         
-        viewControllers = [navController, UIViewController()]
-            
+        viewControllers = [navController, navController]
     }
-    
     
     
 }

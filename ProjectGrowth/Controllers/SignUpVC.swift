@@ -45,6 +45,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         tf.backgroundColor  = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.addTarget(self, action: #selector(handeTextInputChange), for: .editingChanged)
+        tf.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         return tf
     }()
     
@@ -67,6 +68,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         tf.backgroundColor  = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.addTarget(self, action: #selector(handeTextInputChange), for: .editingChanged)
+        tf.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         return tf
     }()
     
@@ -76,6 +78,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         tf.backgroundColor  = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.addTarget(self, action: #selector(handeTextInputChange), for: .editingChanged)
+        tf.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         return tf
     }()
     
@@ -135,7 +138,9 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                     }
                     
                     print("Successfully saved user info to db")
+                    guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarVC else { return }
                     
+                    mainTabBarController.setupViewControllers()
                     
                     self.dismiss(animated: true, completion: nil)
                     

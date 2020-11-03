@@ -61,6 +61,11 @@ class UserProfileVC: UICollectionViewController, UICollectionViewDelegateFlowLay
         
             do {
                 try Auth.auth().signOut()
+                
+                let loginVC = LoginVC()
+                let navController = UINavigationController(rootViewController: loginVC)
+                navController.modalPresentationStyle = .fullScreen
+                self.present(navController, animated: true, completion: nil)
             } catch let signOutErr {
                 print("Failed to sign out:", signOutErr)
             }

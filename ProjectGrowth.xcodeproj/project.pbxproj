@@ -13,7 +13,6 @@
 		CD59628E2547E27500DE6B17 /* AnchorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD59628D2547E27500DE6B17 /* AnchorExtension.swift */; };
 		CD6783142473A72E00043F51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6783132473A72E00043F51 /* AppDelegate.swift */; };
 		CD6783162473A72E00043F51 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6783152473A72E00043F51 /* SceneDelegate.swift */; };
-		CD6783182473A72E00043F51 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6783172473A72E00043F51 /* ContentView.swift */; };
 		CD67831A2473A73200043F51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD6783192473A73200043F51 /* Assets.xcassets */; };
 		CD67831D2473A73200043F51 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD67831C2473A73200043F51 /* Preview Assets.xcassets */; };
 		CD6783202473A73200043F51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD67831E2473A73200043F51 /* LaunchScreen.storyboard */; };
@@ -35,7 +34,6 @@
 		CD6783102473A72E00043F51 /* ProjectGrowth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectGrowth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD6783132473A72E00043F51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD6783152473A72E00043F51 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CD6783172473A72E00043F51 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CD6783192473A73200043F51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD67831C2473A73200043F51 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CD67831F2473A73200043F51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 				CD82EE2F248D1DE200CA8BEF /* Controllers */,
 				CD6783132473A72E00043F51 /* AppDelegate.swift */,
 				CD6783152473A72E00043F51 /* SceneDelegate.swift */,
-				CD6783172473A72E00043F51 /* ContentView.swift */,
 				CD6783192473A73200043F51 /* Assets.xcassets */,
 				CD67831E2473A73200043F51 /* LaunchScreen.storyboard */,
 				CD6783212473A73200043F51 /* Info.plist */,
@@ -290,7 +287,6 @@
 				CD59628B2547E09500DE6B17 /* ColorExtension.swift in Sources */,
 				CD6783162473A72E00043F51 /* SceneDelegate.swift in Sources */,
 				CD82EE36248D525B00CA8BEF /* HomeVCExtension.swift in Sources */,
-				CD6783182473A72E00043F51 /* ContentView.swift in Sources */,
 				CD82EE39248DC71400CA8BEF /* CustomCell.swift in Sources */,
 				CD94720B254B4C8E00D7D791 /* MainTabBarVC.swift in Sources */,
 				CD59628E2547E27500DE6B17 /* AnchorExtension.swift in Sources */,

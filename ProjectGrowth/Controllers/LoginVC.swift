@@ -46,6 +46,10 @@ class LoginVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
         navigationController?.pushViewController(signUpVC, animated: true)
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     let loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Login", for: .normal)
@@ -68,12 +72,16 @@ class LoginVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
                 return
             }
             print("Successfully logged back in with user:", user?.user.uid ?? "")
+            
+            guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarVC else { return }
+//
+            mainTabBarController.setupViewControllers()
             self.dismiss(animated: true, completion: nil)
         }
     
     }
     
-    func handleTextInputChange() {
+    @objc func handleTextInputChange() {
         let isEmailValid = emailTF.text?.count ?? 0 > 0 && passwordTF.text?.count ?? 0 > 0
         
         if isEmailValid {
@@ -88,9 +96,12 @@ class LoginVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
        let tf = UITextField()
         tf.placeholder = "Email"
         tf.textAlignment = .center
-        tf.backgroundColor = UIColor(white: 0, alpha: 0.02)
+        tf.backgroundColor = UIColor(white: 0, alpha: 0.05)
         tf.font = UIFont.systemFont(ofSize: 14)
         tf.borderStyle = .roundedRect
+        tf.textColor = .black
+        tf.attributedPlaceholder = NSAttributedString(string: "Email Address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
         
     }()
@@ -99,9 +110,12 @@ class LoginVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
         let tf = UITextField()
         tf.placeholder = "Password"
         tf.textAlignment = .center
-        tf.backgroundColor = UIColor(white: 0, alpha: 0.02)
+        tf.backgroundColor = UIColor(white: 0, alpha: 0.05)
         tf.font = UIFont.systemFont(ofSize: 14)
         tf.borderStyle = .roundedRect
+        tf.textColor = .black
+        tf.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
     
