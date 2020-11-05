@@ -86,9 +86,9 @@ class UserProfileHeader: UICollectionViewCell {
         return label
     }()
     
-    let newGrowthButton: UIButton = {
+    let editProfileButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("New Growth", for: .normal)
+        button.setTitle("Edit Profile", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.layer.borderColor = UIColor.lightGray.cgColor
@@ -109,8 +109,8 @@ class UserProfileHeader: UICollectionViewCell {
         
         setupUserStats()
         
-        addSubview(newGrowthButton)
-        newGrowthButton.anchor(top: growthsLabel.bottomAnchor, left: profileIV.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 2, paddingLeft: 30, paddingBottom: 0, paddingRight: 30, width: 0, height: 30)
+        addSubview(editProfileButton)
+        editProfileButton.anchor(top: growthsLabel.bottomAnchor, left: profileIV.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 2, paddingLeft: 30, paddingBottom: 0, paddingRight: 30, width: 0, height: 30)
 
     }
     

@@ -25,6 +25,7 @@
 		CD947226254B553000D7D791 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD947225254B553000D7D791 /* UserProfileVC.swift */; };
 		CD94722E254B983F00D7D791 /* UserProfileHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD94722D254B983F00D7D791 /* UserProfileHeaderCell.swift */; };
 		CD94732D254EB28100D7D791 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD94732C254EB28100D7D791 /* SignUpVC.swift */; };
+		CD9473532554703400D7D791 /* PhotoSelectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9473522554703400D7D791 /* PhotoSelectorVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		CD947225254B553000D7D791 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		CD94722D254B983F00D7D791 /* UserProfileHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderCell.swift; sourceTree = "<group>"; };
 		CD94732C254EB28100D7D791 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		CD9473522554703400D7D791 /* PhotoSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorVC.swift; sourceTree = "<group>"; };
 		D2EA1CB2E62182C9D539A07B /* Pods_ProjectGrowth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectGrowth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F68F80EECE6A0E5DCAF1A26A /* Pods-ProjectGrowth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectGrowth.release.xcconfig"; path = "Target Support Files/Pods-ProjectGrowth/Pods-ProjectGrowth.release.xcconfig"; sourceTree = "<group>"; };
 		F9452EB9337A27EB66350261 /* Pods-ProjectGrowth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectGrowth.debug.xcconfig"; path = "Target Support Files/Pods-ProjectGrowth/Pods-ProjectGrowth.debug.xcconfig"; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				CD94732C254EB28100D7D791 /* SignUpVC.swift */,
 				CD94720A254B4C8E00D7D791 /* MainTabBarVC.swift */,
 				CD947225254B553000D7D791 /* UserProfileVC.swift */,
+				CD9473522554703400D7D791 /* PhotoSelectorVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				CD82EE3D248DC78000CA8BEF /* UserModel.swift in Sources */,
 				CD6783142473A72E00043F51 /* AppDelegate.swift in Sources */,
 				CD5962872547846400DE6B17 /* LoginVC.swift in Sources */,
+				CD9473532554703400D7D791 /* PhotoSelectorVC.swift in Sources */,
 				CD59628B2547E09500DE6B17 /* ColorExtension.swift in Sources */,
 				CD6783162473A72E00043F51 /* SceneDelegate.swift in Sources */,
 				CD82EE36248D525B00CA8BEF /* HomeVCExtension.swift in Sources */,
