@@ -22,13 +22,68 @@ class UserProfileVC: UICollectionViewController, UICollectionViewDelegateFlowLay
         
         collectionView.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(UserProfilePhotoCell.self, forCellWithReuseIdentifier: cellId)
         
         setupLogoutButton()
+        
+        orderedGrowths()
+    }
+    
+    
+    fileprivate func orderedGrowths() {
+        guard let uid = Firebase.Auth.auth().currentUser?.uid else {return}
+        let ref = Firebase.Database.database().reference().child("growths").child(uid)
+    
+        ref.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in
+            print(snapshot)
+            
+            guard let dictionary = snapshot.value as? [String: Any] else { return }
+            guard let user = self.user else { return }
+            
+            let growth = Growth(user: user, dictionary: dictionary)
+            self.growths.insert(growth, at: 0)
+            self.collectionView.reloadData()
+        }, withCancel: { (err) in
+            print("Failed to fetch ordered posts:", err)
+  
+    })
+        }
+    
+    var growths = [Growth]()
+    fileprivate func fetchGrowths() {
+        guard let uid = Firebase.Auth.auth().currentUser?.uid else { return }
+        
+        Firebase.Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            print(snapshot.value)
+        } withCancel: { (err) in
+            print("Failed to fetch user for Growth Posts", err)
+        }
+
+        let ref = Firebase.Database.database().reference().child("growths").child(uid)
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            print(snapshot.value)
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            dictionaries.forEach { (key, value) in
+                guard let dictionary = value as? [String: Any] else {return}
+                
+                
+                let imageUrl = dictionary["imageUrl"] as? String
+                let dummyUser = User(uid: uid, dictionary: ["username": "matttest"])
+                
+                let growth = Growth(user: dummyUser, dictionary: dictionary)
+                print(growth.imageUrl)
+                self.growths.append(growth)
+            }
+            self.collectionView.reloadData()
+        } withCancel: { (err) in
+            print("Failed to fetch growth posts", err)
+        }
+
+    
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return growths.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -40,8 +95,10 @@ class UserProfileVC: UICollectionViewController, UICollectionViewDelegateFlowLay
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = .purple
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! UserProfilePhotoCell
+        
+        cell.growth = growths[indexPath.item]
+        
         return cell
     }
     
@@ -90,16 +147,12 @@ class UserProfileVC: UICollectionViewController, UICollectionViewDelegateFlowLay
     var user: User?
     func fetchUser() {
         guard let uid  = Firebase.Auth.auth().currentUser?.uid else { return }
-        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
-            guard let dictionary = snapshot.value as? [String: Any] else { return }
-            
-            self.user = User(dictionary: dictionary)
+        
+        Firebase.Database.fetchUserWithUID(uid: uid) { (user) in
+            self.user = user
             self.navigationItem.title = self.user?.username
             
             self.collectionView.reloadData()
-        } withCancel: { (err) in
-            print("Failed to fetch user:", err)
         }
-
     }
 }

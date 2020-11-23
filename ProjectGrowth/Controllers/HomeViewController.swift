@@ -1,39 +1,76 @@
-////
-////  HomeViewController.swift
-////  ProjectGrowth
-////
-////  Created by MattHew Phraxayavong on 6/7/20.
-////  Copyright © 2020 MattHew Phraxayavong. All rights reserved.
-////
 //
-//import Foundation
-//import UIKit
+//  HomeViewController.swift
+//  ProjectGrowth
 //
+//  Created by MattHew Phraxayavong on 6/7/20.
+//  Copyright © 2020 MattHew Phraxayavong. All rights reserved.
 //
-//class HomeViewController: UIViewController {
-//   
-//
-//    fileprivate let collectionView:UICollectionView = {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .horizontal
-//        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        cv.translatesAutoresizingMaskIntoConstraints = false
-//        cv.register(CustomCell.self, forCellWithReuseIdentifier: "cell")
-//        return cv
-//    }()
-//    
-//    override func viewDidLoad() {
-//        view.backgroundColor = .white
-//        
-//        view.addSubview(collectionView)
-//        
-//        collectionView.backgroundColor = .white
-//        collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height/2 + 50).isActive = true
-//        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40).isActive = true
-//        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40).isActive = true
-////        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
-//        collectionView.heightAnchor.constraint(equalTo: collectionView.widthAnchor, multiplier: 0.5).isActive = true
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-//    }
-//}
+
+import UIKit
+import Firebase
+
+class HomeViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+   
+    let cellId = "cellId"
+    override func viewDidLoad() {
+        collectionView.backgroundColor = .white
+        collectionView.register(HomeViewCell.self, forCellWithReuseIdentifier: cellId)
+        
+        setupNavigationItems()
+        fetchGrowths()
+    }
+    
+    func setupNavigationItems() {
+        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo-1"))
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        var height: CGFloat = 40 + 8 + 8
+        height += view.frame.width
+        height += 50
+        height += 60
+        height += 80
+        
+        return CGSize(width: view.frame.width, height: height)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return growths.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomeViewCell
+        
+        cell.growthPosts = growths[indexPath.item]
+        
+        return cell
+    }
+    
+    var growths = [Growth]()
+    fileprivate func fetchGrowths() {
+        guard let uid = Firebase.Auth.auth().currentUser?.uid else { return }
+        Firebase.Database.fetchUserWithUID(uid: uid) { (user) in
+            self.fetchGrowthsWithUser(user: user)
+        }
+
+    }
+    
+    fileprivate func fetchGrowthsWithUser(user: User) {
+  
+        let ref = Firebase.Database.database().reference().child("growths").child(user.uid)
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+                            
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            dictionaries.forEach { (key, value) in
+                guard let dictionary = value as? [String: Any] else {return}
+                print("dictionary", dictionary)
+                let growth = Growth(user: user, dictionary: dictionary)
+                self.growths.append(growth)
+            }
+            self.collectionView.reloadData()
+        } withCancel: { (err) in
+            print("Failed to fetch growth posts", err)
+        }
+    }
+}
