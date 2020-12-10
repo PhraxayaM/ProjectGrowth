@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B99C654DB4C6BB85D2D78738 /* Pods_ProjectGrowth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2EA1CB2E62182C9D539A07B /* Pods_ProjectGrowth.framework */; };
+		CD43AE85257844860017A983 /* DateTimeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD43AE84257844860017A983 /* DateTimeExtension.swift */; };
+		CD43AE88257848F20017A983 /* UpdateGrowthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD43AE87257848F20017A983 /* UpdateGrowthVC.swift */; };
 		CD5962872547846400DE6B17 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5962862547846400DE6B17 /* LoginVC.swift */; };
 		CD59628B2547E09500DE6B17 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD59628A2547E09500DE6B17 /* ColorExtension.swift */; };
 		CD59628E2547E27500DE6B17 /* AnchorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD59628D2547E27500DE6B17 /* AnchorExtension.swift */; };
@@ -34,9 +36,16 @@
 		CD9473BC255CAA5700D7D791 /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9473BB255CAA5700D7D791 /* HomeViewCell.swift */; };
 		CDC77CF2256A099600D2734A /* FirebaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC77CF1256A099500D2734A /* FirebaseExtension.swift */; };
 		CDC77D06256B95CB00D2734A /* UserSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC77D05256B95CB00D2734A /* UserSearchVC.swift */; };
+		CDC77D09256B999E00D2734A /* UserSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC77D08256B999E00D2734A /* UserSearchCell.swift */; };
+		CDC77D2E256C3D7D00D2734A /* GrowthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC77D2D256C3D7D00D2734A /* GrowthVC.swift */; };
+		CDC77D42256C44BE00D2734A /* CurrentGrowthViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC77D41256C44BE00D2734A /* CurrentGrowthViewCell.swift */; };
+		CDC77D45256C47BE00D2734A /* CurrentGrowthHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC77D44256C47BE00D2734A /* CurrentGrowthHistoryVC.swift */; };
+		CDC77D49256C47ED00D2734A /* CurrentGrowthHistoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC77D48256C47ED00D2734A /* CurrentGrowthHistoryViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD43AE84257844860017A983 /* DateTimeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeExtension.swift; sourceTree = "<group>"; };
+		CD43AE87257848F20017A983 /* UpdateGrowthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGrowthVC.swift; sourceTree = "<group>"; };
 		CD5962862547846400DE6B17 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		CD59628A2547E09500DE6B17 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		CD59628D2547E27500DE6B17 /* AnchorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorExtension.swift; sourceTree = "<group>"; };
@@ -65,6 +74,11 @@
 		CD9473BB255CAA5700D7D791 /* HomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
 		CDC77CF1256A099500D2734A /* FirebaseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseExtension.swift; sourceTree = "<group>"; };
 		CDC77D05256B95CB00D2734A /* UserSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchVC.swift; sourceTree = "<group>"; };
+		CDC77D08256B999E00D2734A /* UserSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
+		CDC77D2D256C3D7D00D2734A /* GrowthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthVC.swift; sourceTree = "<group>"; };
+		CDC77D41256C44BE00D2734A /* CurrentGrowthViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentGrowthViewCell.swift; sourceTree = "<group>"; };
+		CDC77D44256C47BE00D2734A /* CurrentGrowthHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentGrowthHistoryVC.swift; sourceTree = "<group>"; };
+		CDC77D48256C47ED00D2734A /* CurrentGrowthHistoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentGrowthHistoryViewCell.swift; sourceTree = "<group>"; };
 		D2EA1CB2E62182C9D539A07B /* Pods_ProjectGrowth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectGrowth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F68F80EECE6A0E5DCAF1A26A /* Pods-ProjectGrowth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectGrowth.release.xcconfig"; path = "Target Support Files/Pods-ProjectGrowth/Pods-ProjectGrowth.release.xcconfig"; sourceTree = "<group>"; };
 		F9452EB9337A27EB66350261 /* Pods-ProjectGrowth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectGrowth.debug.xcconfig"; path = "Target Support Files/Pods-ProjectGrowth/Pods-ProjectGrowth.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,6 +168,9 @@
 				CD9473522554703400D7D791 /* PhotoSelectorVC.swift */,
 				CD94739E2559DD6C00D7D791 /* NewGrowthVC.swift */,
 				CDC77D05256B95CB00D2734A /* UserSearchVC.swift */,
+				CDC77D2D256C3D7D00D2734A /* GrowthVC.swift */,
+				CD43AE87257848F20017A983 /* UpdateGrowthVC.swift */,
+				CDC77D44256C47BE00D2734A /* CurrentGrowthHistoryVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -166,6 +183,7 @@
 				CD59628D2547E27500DE6B17 /* AnchorExtension.swift */,
 				CD9473A7255B9ED600D7D791 /* CustomImageView.swift */,
 				CDC77CF1256A099500D2734A /* FirebaseExtension.swift */,
+				CD43AE84257844860017A983 /* DateTimeExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -176,8 +194,11 @@
 				CD82EE38248DC71400CA8BEF /* PhotoSelectorCell.swift */,
 				CD94722D254B983F00D7D791 /* UserProfileHeaderCell.swift */,
 				CD9473A4255B9B9100D7D791 /* UserProfilePhotoCell.swift */,
+				CDC77D08256B999E00D2734A /* UserSearchCell.swift */,
 				CD9473892555E46200D7D791 /* PhotoSelectorHeaderCell.swift */,
 				CD9473BB255CAA5700D7D791 /* HomeViewCell.swift */,
+				CDC77D41256C44BE00D2734A /* CurrentGrowthViewCell.swift */,
+				CDC77D48256C47ED00D2734A /* CurrentGrowthHistoryViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -311,13 +332,18 @@
 				CD82EE3D248DC78000CA8BEF /* UserModel.swift in Sources */,
 				CD6783142473A72E00043F51 /* AppDelegate.swift in Sources */,
 				CD5962872547846400DE6B17 /* LoginVC.swift in Sources */,
+				CDC77D49256C47ED00D2734A /* CurrentGrowthHistoryViewCell.swift in Sources */,
 				CD9473532554703400D7D791 /* PhotoSelectorVC.swift in Sources */,
 				CD59628B2547E09500DE6B17 /* ColorExtension.swift in Sources */,
 				CD6783162473A72E00043F51 /* SceneDelegate.swift in Sources */,
 				CDC77CF2256A099600D2734A /* FirebaseExtension.swift in Sources */,
+				CDC77D42256C44BE00D2734A /* CurrentGrowthViewCell.swift in Sources */,
 				CD82EE36248D525B00CA8BEF /* HomeVCExtension.swift in Sources */,
 				CD82EE39248DC71400CA8BEF /* PhotoSelectorCell.swift in Sources */,
+				CD43AE85257844860017A983 /* DateTimeExtension.swift in Sources */,
+				CDC77D09256B999E00D2734A /* UserSearchCell.swift in Sources */,
 				CD94720B254B4C8E00D7D791 /* MainTabBarVC.swift in Sources */,
+				CD43AE88257848F20017A983 /* UpdateGrowthVC.swift in Sources */,
 				CD94739F2559DD6C00D7D791 /* NewGrowthVC.swift in Sources */,
 				CD59628E2547E27500DE6B17 /* AnchorExtension.swift in Sources */,
 				CDC77D06256B95CB00D2734A /* UserSearchVC.swift in Sources */,
@@ -327,8 +353,10 @@
 				CD82EE33248D21C700CA8BEF /* HomeViewController.swift in Sources */,
 				CD94722E254B983F00D7D791 /* UserProfileHeaderCell.swift in Sources */,
 				CD9473BC255CAA5700D7D791 /* HomeViewCell.swift in Sources */,
+				CDC77D2E256C3D7D00D2734A /* GrowthVC.swift in Sources */,
 				CD947226254B553000D7D791 /* UserProfileVC.swift in Sources */,
 				CD9473A5255B9B9100D7D791 /* UserProfilePhotoCell.swift in Sources */,
+				CDC77D45256C47BE00D2734A /* CurrentGrowthHistoryVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

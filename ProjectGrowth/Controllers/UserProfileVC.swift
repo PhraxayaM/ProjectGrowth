@@ -13,11 +13,13 @@ class UserProfileVC: UICollectionViewController, UICollectionViewDelegateFlowLay
     
     let headerId = "headerId"
     let cellId = "cellId"
+    
+    var userId: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
         
-        navigationItem.title = "User Profile"
         fetchUser()
         
         collectionView.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
@@ -26,12 +28,13 @@ class UserProfileVC: UICollectionViewController, UICollectionViewDelegateFlowLay
         
         setupLogoutButton()
         
-        orderedGrowths()
+        fetchOrderedGrowths()
     }
     
     
-    fileprivate func orderedGrowths() {
-        guard let uid = Firebase.Auth.auth().currentUser?.uid else {return}
+    fileprivate func fetchOrderedGrowths() {
+//        guard let uid = Firebase.Auth.auth().currentUser?.uid else {return}
+        guard let uid = self.user?.uid else { return }
         let ref = Firebase.Database.database().reference().child("growths").child(uid)
     
         ref.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in
@@ -54,14 +57,12 @@ class UserProfileVC: UICollectionViewController, UICollectionViewDelegateFlowLay
         guard let uid = Firebase.Auth.auth().currentUser?.uid else { return }
         
         Firebase.Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
-            print(snapshot.value)
         } withCancel: { (err) in
             print("Failed to fetch user for Growth Posts", err)
         }
 
         let ref = Firebase.Database.database().reference().child("growths").child(uid)
         ref.observeSingleEvent(of: .value) { (snapshot) in
-            print(snapshot.value)
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
             dictionaries.forEach { (key, value) in
                 guard let dictionary = value as? [String: Any] else {return}
@@ -78,8 +79,6 @@ class UserProfileVC: UICollectionViewController, UICollectionViewDelegateFlowLay
         } withCancel: { (err) in
             print("Failed to fetch growth posts", err)
         }
-
-    
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -144,15 +143,23 @@ class UserProfileVC: UICollectionViewController, UICollectionViewDelegateFlowLay
         return CGSize(width: view.frame.width, height: 200)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        navigationController?.pushViewController(GrowthVC(collectionViewLayout: UICollectionViewFlowLayout()), animated: true)
+    }
+    
     var user: User?
     func fetchUser() {
-        guard let uid  = Firebase.Auth.auth().currentUser?.uid else { return }
+        
+        let uid = userId ?? (Firebase.Auth.auth().currentUser?.uid ?? "")
+//        guard let uid  = Firebase.Auth.auth().currentUser?.uid else { return }
         
         Firebase.Database.fetchUserWithUID(uid: uid) { (user) in
             self.user = user
             self.navigationItem.title = self.user?.username
             
             self.collectionView.reloadData()
+            
+            self.fetchOrderedGrowths()
         }
     }
 }

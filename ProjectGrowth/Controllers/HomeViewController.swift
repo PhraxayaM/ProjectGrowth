@@ -18,6 +18,27 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         
         setupNavigationItems()
         fetchGrowths()
+        fetchFollowingUserIds()
+        
+
+    }
+    
+    fileprivate func fetchFollowingUserIds() {
+        guard let uid = Firebase.Auth.auth().currentUser?.uid else { return }
+        Firebase.Database.database().reference().child("following").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            print(snapshot.value)
+            
+            guard let userIdsDictionary = snapshot.value as? [String: Any] else { return }
+            
+            userIdsDictionary.forEach { (key, value) in
+                Firebase.Database.fetchUserWithUID(uid: key) { (user) in
+                    self.fetchGrowthsWithUser(user: user)
+                }
+            }
+            
+        } withCancel: { (err) in
+            print("failed to fetch following user ids: ", err)
+        }
     }
     
     func setupNavigationItems() {
@@ -64,10 +85,13 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
             dictionaries.forEach { (key, value) in
                 guard let dictionary = value as? [String: Any] else {return}
-                print("dictionary", dictionary)
                 let growth = Growth(user: user, dictionary: dictionary)
                 self.growths.append(growth)
             }
+            self.growths.sort { (p1, p2) -> Bool in
+                return p1.creationDate.compare(p2.creationDate)  == .orderedDescending
+            }
+            
             self.collectionView.reloadData()
         } withCancel: { (err) in
             print("Failed to fetch growth posts", err)
