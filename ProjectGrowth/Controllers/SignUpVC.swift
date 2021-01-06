@@ -169,7 +169,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(photoButton)
-        view.backgroundColor =  .white
+        view.backgroundColor = UIColor.rgb(red: 243, green: 242, blue: 220)
         photoButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 100, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 140, height: 140)
         photoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         

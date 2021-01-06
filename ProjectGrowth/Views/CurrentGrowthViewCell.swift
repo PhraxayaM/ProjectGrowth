@@ -20,7 +20,21 @@ class CurrentGrowthViewCell: UICollectionViewCell {
             photoImageView.loadImage(urlString: growthImageUrl)
 //            print("this is", growthCreationDate)
 //            creationLabel.text = growthCreationDate
+            setupAttributedCaption()
         }
+    }
+    
+    fileprivate func setupAttributedCaption() {
+        guard let post = self.growthPosts else { return }
+        print(post.user.username)
+        let attributedText = NSMutableAttributedString(string: post.user.username, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)])
+        attributedText.append(NSAttributedString(string: " \(post.caption)", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)]))
+        attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 4)]))
+        
+        let timeAgoDisplay = post.creationDate.timeAgoDisplay()
+        attributedText.append(NSAttributedString(string: timeAgoDisplay, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.gray]))
+        
+        creationLabel.attributedText = attributedText
     }
     
     let photoImageView: CustomImageView = {

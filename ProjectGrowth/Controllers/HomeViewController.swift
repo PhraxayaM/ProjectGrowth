@@ -26,7 +26,6 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     fileprivate func fetchFollowingUserIds() {
         guard let uid = Firebase.Auth.auth().currentUser?.uid else { return }
         Firebase.Database.database().reference().child("following").child(uid).observeSingleEvent(of: .value) { (snapshot) in
-            print(snapshot.value)
             
             guard let userIdsDictionary = snapshot.value as? [String: Any] else { return }
             
@@ -42,7 +41,8 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     func setupNavigationItems() {
-        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo-1"))
+//        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo-1"))
+        navigationItem.title = "Home Feed"
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

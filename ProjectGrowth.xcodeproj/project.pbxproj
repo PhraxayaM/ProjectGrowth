@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B99C654DB4C6BB85D2D78738 /* Pods_ProjectGrowth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2EA1CB2E62182C9D539A07B /* Pods_ProjectGrowth.framework */; };
+		CD3392D525A65CA600BFB5BF /* logopg.png in Resources */ = {isa = PBXBuildFile; fileRef = CD3392D425A65CA600BFB5BF /* logopg.png */; };
 		CD43AE85257844860017A983 /* DateTimeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD43AE84257844860017A983 /* DateTimeExtension.swift */; };
 		CD43AE88257848F20017A983 /* UpdateGrowthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD43AE87257848F20017A983 /* UpdateGrowthVC.swift */; };
 		CD5962872547846400DE6B17 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5962862547846400DE6B17 /* LoginVC.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD3392D425A65CA600BFB5BF /* logopg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logopg.png; sourceTree = "<group>"; };
 		CD43AE84257844860017A983 /* DateTimeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeExtension.swift; sourceTree = "<group>"; };
 		CD43AE87257848F20017A983 /* UpdateGrowthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGrowthVC.swift; sourceTree = "<group>"; };
 		CD5962862547846400DE6B17 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				CD6783132473A72E00043F51 /* AppDelegate.swift */,
 				CD6783152473A72E00043F51 /* SceneDelegate.swift */,
 				CD6783192473A73200043F51 /* Assets.xcassets */,
+				CD3392D425A65CA600BFB5BF /* logopg.png */,
 				CD67831E2473A73200043F51 /* LaunchScreen.storyboard */,
 				CD6783212473A73200043F51 /* Info.plist */,
 				CD9471D3254906C700D7D791 /* GoogleService-Info.plist */,
@@ -274,6 +277,7 @@
 			files = (
 				CD6783202473A73200043F51 /* LaunchScreen.storyboard in Resources */,
 				CD67831D2473A73200043F51 /* Preview Assets.xcassets in Resources */,
+				CD3392D525A65CA600BFB5BF /* logopg.png in Resources */,
 				CD67831A2473A73200043F51 /* Assets.xcassets in Resources */,
 				CD9471D4254906C700D7D791 /* GoogleService-Info.plist in Resources */,
 			);

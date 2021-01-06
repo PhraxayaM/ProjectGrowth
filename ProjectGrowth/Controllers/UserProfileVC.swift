@@ -38,7 +38,7 @@ class UserProfileVC: UICollectionViewController, UICollectionViewDelegateFlowLay
         let ref = Firebase.Database.database().reference().child("growths").child(uid)
     
         ref.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in
-            print(snapshot)
+            print("fetchorderedgrowths: ", snapshot)
             
             guard let dictionary = snapshot.value as? [String: Any] else { return }
             guard let user = self.user else { return }

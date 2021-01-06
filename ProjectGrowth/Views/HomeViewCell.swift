@@ -101,7 +101,7 @@ class HomeViewCell: UICollectionViewCell {
 //        label.text = "placeholder"
         
         label.numberOfLines = 0
-        label.backgroundColor = .yellow
+//        label.backgroundColor = .yellow
         return label
     }()
     

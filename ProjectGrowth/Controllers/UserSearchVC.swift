@@ -64,11 +64,15 @@ class UserSearchVC: UICollectionViewController, UICollectionViewDelegateFlowLayo
         navigationController?.pushViewController(userProfileVC, animated: true)
     }
     
+    
     var filteredUsers  = [User]()
     var users = [User]()
     fileprivate func fetchUsers() {
+        
+        
         let ref = Firebase.Database.database().reference().child("users")
         ref.observeSingleEvent(of: .value) { (snapshot) in
+            
             
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
             

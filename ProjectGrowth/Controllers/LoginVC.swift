@@ -15,7 +15,7 @@ class LoginVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.rgb(red: 243, green: 242, blue: 220)
         navigationController?.isNavigationBarHidden = true
         
         view.addSubview(signUpButton)
@@ -53,8 +53,9 @@ class LoginVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
     let loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Login", for: .normal)
+        button.setTitleColor(UIColor.rgb(red: 35, green: 86, blue: 96), for: .normal)
         button.layer.cornerRadius = 5
-        button.backgroundColor = .green
+        button.backgroundColor = UIColor.rgb(red: 93, green: 139, blue: 125)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
@@ -86,7 +87,7 @@ class LoginVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
         
         if isEmailValid {
             loginButton.isEnabled  = true
-            loginButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237)
+            loginButton.backgroundColor = UIColor.rgb(red: 93, green: 139, blue: 125)
         } else {
             loginButton.isEnabled = false
             loginButton.backgroundColor = UIColor.rgb(red: 149, green: 149, blue: 149)
@@ -121,7 +122,7 @@ class LoginVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
     
     let logoPhoto: UIImageView = {
         let IV = UIImageView()
-        IV.image = #imageLiteral(resourceName: "Logo").withRenderingMode(.alwaysOriginal)
+        IV.image = #imageLiteral(resourceName: "logopg2.png").withRenderingMode(.alwaysOriginal)
         IV.translatesAutoresizingMaskIntoConstraints = false
         return IV
     }()
