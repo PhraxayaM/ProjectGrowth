@@ -5,6 +5,9 @@ Project Growth is designed for people who want to keep a progress track of somet
 
 ## Wireframe
 ![Imgur Image](https://imgur.com/jvcymqj.jpg)
+<img src="SS/login.png" >
+<img src="SS/homefeed.png" >
+<img src="SS/home2.png" >
 
 ## Planned Features
 - [X] Create a new account with authentication
@@ -12,5 +15,5 @@ Project Growth is designed for people who want to keep a progress track of somet
 - [X] Search Users
 - [X] Follow Users
 - [] Add comments
-- [] See other users growths
+- [X] See other users growths
 
