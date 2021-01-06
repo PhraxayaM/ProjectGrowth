@@ -4,10 +4,9 @@
 Project Growth is designed for people who want to keep a progress track of something new they started, such as growing a new plant.
 
 ## Wireframe
-![Imgur Image](https://imgur.com/jvcymqj.jpg)
-<img src="SS/login.png" >
-<img src="SS/homefeed.png" >
-<img src="SS/home2.png" >
+<img src="SS/login.png" width="600" height="800">
+<img src="SS/homefeed.png" width="600" height="800">
+<img src="SS/home2.png" width="600" height="800">
 
 ## Planned Features
 - [X] Create a new account with authentication
