@@ -4,7 +4,7 @@
 Project Growth is designed for people who want to keep a progress track of something new they started, such as growing a new plant.
 
 ## Wireframe
-<img src="SS/login.png" width="400" height="500">
+<img src="SS/login.png" >
 <img src="SS/homefeed.png" width="400" height="500">
 <img src="SS/home2.png" width="400" height="500">
 
