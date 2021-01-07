@@ -35,7 +35,7 @@ class UserSearchCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .yellow
+//        backgroundColor = .yellow
         addSubview(profileIV)
         profileIV.anchor(top: nil, left: leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
         profileIV.layer.cornerRadius = 50/2
