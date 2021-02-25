@@ -3,6 +3,10 @@
 
 Project Growth is designed for people who want to keep a progress track of something new they started, such as growing a new plant.
 
+## Demo
+
+![Alt Text](https://media.giphy.com/media/wvv5uhJnNvt8eVHSvS/giphy.gif)
+
 ## Screenshots
 <img src="SS/ss.png" >
 <img src="SS/ss2.png" >
