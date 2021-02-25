@@ -4,7 +4,7 @@
 Project Growth is designed for people who want to keep a progress track of something new they started, such as growing a new plant.
 
 ## Demo
-![Demo](projGrowth.gif)
+![Demo](gro.gif)
 
 ## Screenshots
 <img src="SS/ss.png" >
